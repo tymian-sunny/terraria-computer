@@ -1,5 +1,8 @@
-# Vue 3 + Vite
+# 泰拉瑞亚种子生成计算器
+算法作者链接: [泄露天机！藏在泰拉瑞亚种子里的秘密：随机数](https://www.bilibili.com/video/BV14zYkzaEUD)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+项目体验链接: [在线泰拉瑞亚种子生成计算器]([泰拉瑞亚种子生成计算器](https://terraria.tymian.xyz/))
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## 使用方法
+
+输入种子号后点击开始计算即可
