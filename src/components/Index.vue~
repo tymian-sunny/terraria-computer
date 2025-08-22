@@ -1,0 +1,156 @@
+<template>
+    <h1> 泰拉瑞亚随机数计算器 </h1>
+    <el-input v-model="seed" style="width: 240px" placeholder="请输入种子号" />
+    <el-button @click="startCount()">开始计算</el-button>
+    
+    <div>{{ firstRandom }} {{ secondRandom }} {{ thirdRandom }} {{ ninthRandom }}</div>
+
+    <br><br>
+
+    <div>
+        发光苔藓: {{ mossTypes[mossType] }}
+        <el-image v-if="mossType == 1" src="../../public/moss/Argon_Moss_(placed).webp"></el-image>
+        <el-image v-if="mossType == 2" src="../../public/moss/Xenon_Moss_(placed).webp"></el-image>
+        <el-image v-if="mossType == 3" src="../../public/moss/Krypton_Moss_(placed).webp"></el-image>
+        <el-image v-if="mossType == 4" src="../../public/moss/Neon_Moss_(placed).webp"></el-image>
+    </div>
+
+    <div>地牢位置</div>
+    <div>地牢第一个金箱位置</div>
+
+    <div>
+        地牢颜色:{{ dungeonColors[dungeonColor] }}
+        <el-image v-if="dungeonColor == 1" src="../../public/dungeonColor/Blue_Brick_Wall_(placed).webp"></el-image>
+        <el-image v-if="dungeonColor == 2" src="../../public/dungeonColor/Green_Brick_Wall_(placed).webp"></el-image>
+        <el-image v-if="dungeonColor == 3" src="../../public/dungeonColor/Pink_Brick_Wall_(placed).webp"></el-image>
+    </div>
+
+    <div>
+        第一个空岛生成位置: {{ firstRandom }}
+    </div>
+
+    <div>
+        是否生成雏翼: {{ fledglingWings }}
+    </div>
+
+    <div>
+        是否生成佛罗里达海洋: {{ isFlorida }}
+        <el-image v-if="isFlorida" src="../../public/sea/200px-Florida_style_ocean_map_view.webp"></el-image>
+        <div v-if="isFlorida">佛罗里达海洋位置: {{ floridaPositions[floridaPosition] }}</div>
+    </div>
+
+    <div>微光位置</div>
+
+    <div>
+        困难模式邪恶V和神圣V的方向: {{ theVWithEvidAndSacredsPosition[theVWithEvidAndSacred] }}
+
+    </div>
+
+    <div>困难模式V的偏移</div>
+
+    <div>
+        初始云的方向: {{ cloudPosition[theFirstCloud] }}
+
+    </div>
+
+    <div>
+        初始NPC向导的名字: {{  }}
+    </div>
+
+
+  
+</template>
+
+<script setup>
+    import { ref } from 'vue'
+    import * as utils from '../js/count.js'
+
+    const seed = ref()
+    const firstRandom = ref(0)
+    const secondRandom = ref(0)
+    const thirdRandom = ref(0)
+    const ninthRandom = ref(0)
+
+    const mossType = ref()
+    const mossTypes = {
+        1: "氩苔藓",
+        2: "氙苔藓",
+        3: "氪苔藓",
+        4: "氖苔藓"
+    }
+
+    const dungeonColor = ref()
+    const dungeonColors= {
+        1: "蓝色",
+        2: "绿色",
+        3: "粉色"
+    }
+
+    const fledglingWings = ref()
+
+    const isFlorida = ref()
+    const floridaPosition = ref()
+    const floridaPositions = {
+        1: "世界左侧",
+        2: "世界右侧"
+    }
+    const seaCave = ref()
+
+    const theVWithEvidAndSacred = ref()
+    const theVWithEvidAndSacredsPosition = {
+        1: "邪恶在左, 神圣在右",
+        2: "神圣在左, 邪恶在右"
+    }
+
+    const theFirstCloud = ref()
+    const cloudPosition = {
+        1: "向左",
+        2: "向右"
+    }
+
+    const theFirstGuideName = ref()
+    const guideName = {
+        1: ""
+    }
+
+    function startCount(){
+        console.log("start")
+        if(seed.value == null){
+            throw new Error("请先输入种子号")
+        }
+
+        firstRandom.value = utils.countTheFirstRandom(seed.value)
+        secondRandom.value = utils.countTheSecondRandom(seed.value)
+        thirdRandom.value = utils.countTheThirdRandom(seed.value)
+        ninthRandom.value = utils.coundTheNinthRandom(seed.value)
+
+        mossType.value = utils.mossType(firstRandom.value)
+
+        dungeonColor.value = utils.dungeonColor(secondRandom.value)
+
+        fledglingWings.value = utils.isFledglingWings(ninthRandom.value)
+        
+        isFlorida.value = utils.isFlorida(firstRandom.value)
+        if(isFlorida.value == true){
+            floridaPosition.value = utils.floridaPosition(firstRandom.value, secondRandom.value)
+        }
+        seaCave.value = utils.seaCave(firstRandom.value)
+
+        theVWithEvidAndSacred.value = utils.theVWithEvidAndSacred(thirdRandom.value)
+
+        theFirstCloud.value = utils.theFirstCloud(thirdRandom.value)
+
+        theFirstGuideName.value = utils.theFirstGuideName(secondRandom.value)
+
+        return 1
+    }
+
+
+</script>
+
+
+<style scoped>
+    .read-the-docs {
+        color: #888;
+    }
+</style>
