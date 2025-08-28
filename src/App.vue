@@ -1,9 +1,9 @@
 <template>
-  <Index/>
+  <home/>
 </template>
 
 <script setup>
-import Index from './components/Index.vue'
+import home from './components/home.vue'
 </script>
 
 <style scoped>

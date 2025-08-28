@@ -21,10 +21,55 @@
     </div>
     </el-affix>
     
-    <div> 第一随机数: {{ firstRandom }}</div>
-    <div> 第二随机数: {{ secondRandom }}</div>
-    <div> 第三随机数: {{ thirdRandom }}</div>
-    <div> 第九随机数: {{ ninthRandom }}</div>
+    <div> 
+        第一随机数:
+        <el-input-number
+            v-model="firstRandom"
+            :min="0"
+            :max="1"
+            :step="0.01"
+            size="right"
+            controls-position="right"
+            @change="countTheFirstRandom()"
+        />
+    </div>
+
+    <div> 
+        第二随机数:
+        <el-input-number
+            v-model="secondRandom"
+            :min="0"
+            :max="1"
+            :step="0.01"
+            size="right"
+            controls-position="right"
+            @change="countTheSecondRandom()"
+        />
+    </div>
+    <div> 
+        第三随机数:
+        <el-input-number
+            v-model="thirdRandom"
+            :min="0"
+            :max="1"
+            :step="0.01"
+            size="right"
+            controls-position="right"
+            @change="countTheThirdRandom()"
+        />
+    </div>
+    <div> 
+        第九随机数:
+        <el-input-number
+            v-model="ninthRandom"
+            :min="0"
+            :max="1"
+            :step="0.01"
+            size="right"
+            controls-position="right"
+            @change="countTheNinthRandom()"
+        />
+    </div>
 
     <br><br>
 
@@ -297,6 +342,7 @@
 
     const fallenWood = ref()
 
+    // 开始计算
     function startCount(){
         console.log("start")
         if(seed.value == ""){
@@ -348,6 +394,7 @@
         return 1
     }
 
+    // 种子号判断
     function checkSeed() {
         if (seed.value === '' || seed.value === null) return
 
@@ -366,6 +413,7 @@
         }
     }
 
+    // 设置上锁金箱贴图的位置
     function setLockedGoldChestPosition(yPos){
         const bg = document.getElementById("bg");
         const chest = document.getElementById("chest");
@@ -378,6 +426,7 @@
         chest.style.top = y + "px";
     }
 
+    // 设置空岛贴图的位置
     function setIslandPosition(xPos){
         const bgShow = document.getElementById("skyBgShow"); // 展示图
         const bgCalc = document.getElementById("skyBgCalc"); // 计算图
@@ -404,6 +453,7 @@
         island.style.left = displayX + "px";
     }
 
+    // 设置微光贴图的位置
     function setGlimmer(xPos, yPos) {
         const bgShow = document.getElementById("glimmerBgShow"); 
         const bgCalc = document.getElementById("glimmerBgCalc"); 
@@ -452,6 +502,36 @@
         glimmer2.style.left = displayX + "px";
         glimmer2.style.top = displayY + "px";
     }
+
+    // 第一随机数计算种子
+    function countTheFirstRandom(){
+        seed.value = utils.firstRandomToSeed(firstRandom.value)
+        secondRandom.value = 0
+        thirdRandom.value = 0
+        ninthRandom.value = 0
+    }
+
+    function countTheSecondRandom(){
+        seed.value = utils.secondRandomToSeed(secondRandom.value)
+        firstRandom.value = 0
+        thirdRandom.value = 0
+        ninthRandom.value = 0
+    }
+
+    function countTheThirdRandom(){
+        seed.value = utils.thirdRandomToSeed(thirdRandom.value)
+        firstRandom.value = 0
+        secondRandom.value = 0
+        ninthRandom.value = 0
+    }
+
+    function countTheNinthRandom(){
+        seed.value = utils.ninthRandomToSeed(ninthRandom.value)
+        firstRandom.value = 0
+        secondRandom.value = 0
+        thirdRandom.value = 0
+    }
+
 
 
 </script>

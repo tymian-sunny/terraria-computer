@@ -16,20 +16,20 @@ export function coundTheNinthRandom(seed){
 }
 
 // 随机数反推种子
-export function FirstRandomToSeed(firstRandom){
-    return (Math.floor(firstRandom * 2147483647) * 1796695496 + 1821612595) % (Math.pow(2, 31) - 1)
+export function firstRandomToSeed(firstRandom){
+    return Number((BigInt(Math.floor(firstRandom * 2147483647)) * BigInt(1796695496) + BigInt(1821612595)) % BigInt(Math.pow(2, 31) - 1))
 }
 
 export function secondRandomToSeed(secondRandom){
-    return (Math.floor(secondRandom * 2147483647) * 1891800662 + 1409645351) % (Math.pow(2, 31) - 1)
+    return Number((BigInt(Math.floor(secondRandom * 2147483647)) * BigInt(1891800662) + BigInt(1409645351)) % BigInt(Math.pow(2, 31) - 1))
 }
 
 export function thirdRandomToSeed(thirdRandom){
-    return (Math.floor(thirdRandom * 2147483647) * 1610885040 + 587487227) % (Math.pow(2, 31) - 1)
+    return Number((BigInt(Math.floor(thirdRandom * 2147483647)) * BigInt(1610885040) + BigInt(587487227)) % BigInt(Math.pow(2, 31) - 1))
 }
 
 export function ninthRandomToSeed(ninthRandom){
-    return (Math.floor(ninthRandom * 2147483647) * 648963137 + 1348178552) % (Math.pow(2, 31) - 1)
+    return Number((BigInt(Math.floor(ninthRandom * 2147483647)) * BigInt(648963137) + BigInt(1348178552)) % BigInt(Math.pow(2, 31) - 1))
 }
 
 // 计算发光苔藓种类
