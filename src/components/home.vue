@@ -1,13 +1,5 @@
 <template>
-    <h1> 泰拉瑞亚种子生成计算器 </h1>
-    <p>
-        <el-link href="https://github.com/tymian-sunny/terraria-computer" target="_blank" style="font-size: medium;">
-            <img style="width: 28px;" src="https://img.icons8.com/?size=100&id=106562&format=png&color=000000" alt="">
-            项目以开源至GitHub,点此前往
-        </el-link>
-    </p>
-    
-
+    <h2>种子生成计算器</h2>
     <el-affix :offset="10">
         <el-input v-model.number="seed" style="width: 240px" placeholder="请输入种子号" @blur="checkSeed" />
         <el-button @click="startCount()">开始计算</el-button>
