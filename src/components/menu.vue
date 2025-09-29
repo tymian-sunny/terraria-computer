@@ -1,6 +1,6 @@
 <template>
   <el-col :span="12">
-    <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
+    <el-menu default-active="1" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
       @close="handleClose" @mouseenter="$emit('update-collapse', false)" @mouseleave="$emit('update-collapse', true)">
       <el-menu-item index="1" @click="$emit('update-selectComponent', 0)">
         <el-icon><icon-menu /></el-icon>
